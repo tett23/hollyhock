@@ -1,0 +1,16 @@
+-#encoding: utf-8
+
+%article#novel
+  %header
+    %h1=breadcrumbs(@page)
+    #description
+      =simple_format @page.description
+      #info.clearfix
+        %p#created_at.clearfix=formated_time @page.created_at
+        %p#view_count.clearfix
+          閲覧数
+          =@page.view_count
+  %section#body
+    =simple_format @page.body
+  %footer
+    =partial :'pages/tree', :locals=>{:pages=>@page}

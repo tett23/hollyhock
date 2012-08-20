@@ -1,0 +1,36 @@
+header h1 > a {
+  font-size: 20px;
+  color: black; }
+  header h1 > a:hover {
+    color: #eeee77; }
+
+#gnav > ul > li {
+  float: left;
+  padding-right: 20px; }
+  #gnav > ul > li a {
+    color: black; }
+    #gnav > ul > li a:hover {
+      color: #eeee77; }
+
+#content {
+  margin: 20px 50px; }
+
+.news > footer {
+  text-align: right; }
+
+.panel {
+  width: 700px;
+  float: left; }
+
+#gnav h1, #gnav ul {
+  position: fixed;
+  left: 0; }
+
+#gnav h1 {
+  top: 0; }
+
+#gnav ul {
+  top: 50px; }
+
+#content {
+  margin-top: 100px; }

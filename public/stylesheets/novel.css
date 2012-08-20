@@ -1,0 +1,48 @@
+#content {
+  width: 900px; }
+
+header > h1 > a {
+  font-size: 20px; }
+  header > h1 > a:hover {
+    color: #666666; }
+
+nav.chapters {
+  float: right;
+  padding-left: 10px; }
+  nav.chapters #parent {
+    margin-bottom: 20px; }
+  nav.chapters nav.chapters > ul {
+    text-indent: 2em; }
+
+article#novel, #books {
+  width: 800px;
+  margin: 30px 100px;
+  font-size: 13px; }
+  article#novel #description, #books #description {
+    margin: 20px; }
+  article#novel #main, #books #main {
+    margin-top: 50px; }
+
+nav.control {
+  width: 800px;
+  text-align: center;
+  margin: 20px 0; }
+
+nav.control > span {
+  color: #666666; }
+  nav.control > span:hover {
+    text-decoration: underline;
+    cursor: pointer; }
+
+#body {
+  border-top: dotted 1px #666666;
+  padding-top: 10px; }
+
+#info {
+  margin: 0;
+  padding: 0; }
+  #info #created_at, #info #view_count {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 11px; }

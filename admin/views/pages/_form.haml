@@ -1,0 +1,46 @@
+.group
+  =f.label :title
+  =f.error_message_on :title
+  =f.text_field :title, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :slug
+  =f.error_message_on :slug
+  =f.text_field :slug, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :description
+  =f.error_message_on :description
+  ~f.text_area :description, :class => :text_area
+  %span.description Ex: a simple text
+
+.group
+  =f.label :body
+  =f.error_message_on :body
+  ~f.text_area :body, :class => :text_area
+  %span.description Ex: a simple text
+
+.group
+  =f.label :parent_collection
+  =f.error_message_on :parent_collection
+  =select_tag :page_id, :options=>@collections, :class=>:select, :name=>'page[page_id]', :include_blank=>'None', :selected=>(@page.page_id.nil? ? nil : @page.page_id)
+  %span.description Ex: a simple text
+
+.group
+  =f.label :is_collection
+  =f.error_message_on :is_collection
+  =f.check_box :is_collection, :class => :check_box
+  %span.description Ex: a simple text
+
+.group
+  =f.label :view_count
+  =f.error_message_on :view_count
+  =f.text_field :view_count, :class => :text_field, :disabled=>true
+  %span.description Ex: a simple text
+
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:pages, :index)}';return false", :class => :button
