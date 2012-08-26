@@ -1,3 +1,12 @@
 h1. hollyhock
 
 小説とか用のCMS的なーーーーーー
+
+h2. 初期設定
+
+<pre>
+bundle install
+padrino rake dm:auto:upgrade
+</pre>
+
+必要に応じて、StaticPageでrouteを"/about"にしてaboutページを作成する
