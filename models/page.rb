@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Page
   include DataMapper::Resource
 
@@ -22,6 +23,7 @@ class Page
     pages= nil
     pathes.each do |path|
       page = first(:slug=>path)
+      page = first(:title=>URI.decode(path)) if page.nil?
       pages = page
     end
 
