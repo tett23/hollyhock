@@ -12,6 +12,7 @@ Admin.controllers :articles do
 
   post :create do
     @static_page = StaticPage.new(params[:static_page])
+    @static_page.template_id = ApplicationConfig.value(:articles_template)
 
     if @static_page.save
       @static_page.update(:route=>'/articles/'+@static_page.id.to_s)

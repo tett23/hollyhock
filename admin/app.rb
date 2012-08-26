@@ -35,6 +35,7 @@ class Admin < Padrino::Application
     role.project_module :static_pages, '/static_pages'
     role.project_module :pages, '/pages'
     role.project_module :articles, '/articles'
+    role.project_module :application_configs, '/application_configs'
     role.project_module :accounts, '/accounts'
   end
 end

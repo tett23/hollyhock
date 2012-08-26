@@ -1,0 +1,15 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:application_configs, :index)
+      %li=link_to pat(:new), url(:application_configs, :new)
+      %li.active=link_to pat(:edit), url(:application_configs, :edit, :id => @application_config.id)
+  .content
+    %h2.title
+      =pat(:edit)
+      =mt(:application_config)
+    .inner
+      -form_for :application_config, url(:application_configs, :update, :id => @application_config.id), :method => :put, :class => :form do |f|
+        =partial "application_configs/form", :locals => { :f => f }
+
+-content_for :sidebar, partial("base/sidebar")

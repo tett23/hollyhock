@@ -1,0 +1,29 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:application_configs, :index)
+      %li=link_to pat(:new), url(:application_configs, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:application_configs)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:application_config, :id)
+          %th=mat(:application_config, :name)
+          %th=mat(:application_config, :value)
+          %th.last="&nbsp;"
+        -@application_configs.each do |application_config|
+          %tr
+            %td.first=application_config.id
+            %td=application_config.name
+            %td=application_config.value
+            %td.last
+              =button_to pat(:edit), url(:application_configs, :edit, :id => application_config.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:application_configs, :destroy, :id => application_config.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
