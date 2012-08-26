@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 # Seed add you the ability to populate your db.
 # We provide you a basic shell for interaction with the end user.
 # So try some code like below:
@@ -23,6 +25,19 @@ else
   shell.say "Sorry but some thing went wrong!"
   shell.say ""
   account.errors.full_messages.each { |m| shell.say "   - #{m}" }
+end
+
+articles = StaticPage.first(:route=>'/articles')
+if articles.nil?
+  shell.say '/articlesページを作成します'
+
+  body = "<notextile>
+<inline_script>
+-StaticPage.articles.each do |article|
+  =partial :'root/article', :locals=>{:article=>article}
+<inline_script>
+</notextile>"
+  StaticPage.create(:title=>'articles', :route=>'/articles', :body=>body, :is_template=>false, :is_article=>false, :template_id=>nil)
 end
 
 shell.say ""
