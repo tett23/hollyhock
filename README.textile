@@ -7,6 +7,7 @@ h2. 初期設定
 <pre>
 bundle install
 padrino rake dm:auto:upgrade
+padrino rake seed
 </pre>
 
 必要に応じて、StaticPageでrouteを"/about"にしてaboutページを作成する
