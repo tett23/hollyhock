@@ -24,7 +24,7 @@
 
 .group
   =f.label :parent_collection
-  =f.error_message_on :parent_collection
+  =f.error_message_on :page_id
   =select_tag :page_id, :options=>@collections, :class=>:select, :name=>'page[page_id]', :include_blank=>'None', :selected=>(@page.page_id.nil? ? nil : @page.page_id)
   %span.description Ex: a simple text
 

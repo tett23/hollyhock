@@ -8,15 +8,15 @@ Hollyhock.helpers do
     page_names << breadcrumb(page)
     parent = nil
 
-    loop  do
+    100.times do
       parent = page.page
-      page = parent
       break if parent.nil?
+      page = parent
 
       page_names << breadcrumb(parent)
     end
 
-    page_names.reverse.unshift('<a href="/novels">novels</a>').unshift('<a href="/">donuthole.org</a>').join('&nbsp;/&nbsp;')
+    page_names.reverse.unshift('<a href="/">donuthole.org</a>').join('&nbsp;/&nbsp;')
   end
 
   def breadcrumb(page)
@@ -25,7 +25,7 @@ Hollyhock.helpers do
 
   def get_href(page)
     slugs = _get_slug(page, [])
-    '/novels/'+slugs.join('/')
+    '/'+slugs.join('/')
   end
 
   def _get_slug(page, arr)

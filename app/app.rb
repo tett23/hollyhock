@@ -19,9 +19,12 @@ class Hollyhock < Padrino::Application
   end
 
   get :'/novels', /^(^\/)novels$/ do
-    @collections = Page.root_collections()
+    @page = Page.get(ApplicationConfig.value(:novels_root))
+    halt 404 if @page.nil?
 
-    render :'pages/index', :layout=>:novel
+    @page.increment_view_count()
+
+    render :'pages/show', :layout=>:novel
   end
 
   get :'/:static_page', /^(^\/).+$/ do
