@@ -17,7 +17,7 @@ class Page
 
 
   belongs_to :page
-  has n, :pages
+  has n, :pages, :order=>[:created_at.desc, :id.desc]
 
   def self.path_resolver(pathes)
     pages= nil
