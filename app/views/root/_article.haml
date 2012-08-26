@@ -1,0 +1,10 @@
+-#encoding: utf-8
+
+%article.article
+  %header
+    %h1=link_to article.title, '/articles/'+article.id.to_s
+  %section.body
+    =parse_textile article.body
+  %footer
+    %p#created_at.clearfix=formated_time article.created_at
+

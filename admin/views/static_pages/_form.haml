@@ -1,0 +1,34 @@
+.group
+  =f.label :title
+  =f.error_message_on :title
+  =f.text_field :title, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :route
+  =f.error_message_on :route
+  =f.text_field :route, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :body
+  =f.error_message_on :body
+  ~f.text_area :body, :class => :text_area
+  %span.description Ex: a simple text
+
+.group
+  =f.label :is_template
+  =f.error_message_on :is_template
+  =f.check_box :is_template, :class => :check_box
+  %span.description Ex: a simple text
+
+.group
+  =f.label :template_id
+  =f.error_message_on :template_id
+  =select_tag :template_id, :options=>@collections, :class=>:select, :name=>'static_page[template_id]', :include_blank=>'None', :selected=>(@static_page.template_id.nil? ? nil : @static_page.template_id)
+  %span.description Ex: a simple text
+
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:static_pages, :index)}';return false", :class => :button

@@ -1,9 +1,20 @@
 -#encoding: utf-8
 !!! html 5
-%meta{:charset=>'utf-8'}
-%title novel | donuthole.org
-=stylesheet_link_tag '/stylesheets/normalize', '/stylesheets/common', '/stylesheets/novel'
-=javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
-
-#content
-  =yield
+%html
+  %head
+    %meta{:charset=>'utf-8'}
+    %title=@title.nil? ? 'donuthole.org' : [@title, 'donuthole.org'].join('|')
+    =stylesheet_link_tag '/stylesheets/normalize', '/stylesheets/common', '/stylesheets/static_page'
+    =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
+  %body
+    %header
+      %h1=link_to 'donuthole.org', '/'
+      %nav.clearfix
+        %ul
+          %li=link_to 'top', '/'
+          %li=link_to 'about', '/about'
+          %li=link_to 'article', '/articles'
+          %li=link_to 'novel', '/novels'
+          %li=link_to 'admin', '/admin'
+    #content
+      =yield

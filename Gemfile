@@ -34,3 +34,8 @@ gem 'padrino', '0.10.7'
 # end
 
 gem 'pry'
+gem 'RedCloth'
+gem 'guard'
+gem 'guard-coffeescript'
+gem 'rb-inotify'
+gem 'coffee-filter'

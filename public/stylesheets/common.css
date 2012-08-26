@@ -5,10 +5,13 @@
   clear: both; }
 
 * {
+  color: #666666;
+  font-size: 13px;
   font-family: "HG丸ゴシックM-PRO", "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+  letter-spacing: 0.15em;
   line-height: 1.75em;
-  letter-pacing: 0.15em;
-  font-size: 13px; }
+  font-weight: normal;
+  text-decoration: none; }
 
 a {
   color: #666666;
@@ -18,3 +21,6 @@ a {
 
 ul {
   margin: 0; }
+
+header > h1, header > h1 > a {
+  font-size: 16px; }

@@ -16,7 +16,7 @@ Hollyhock.helpers do
       page_names << breadcrumb(parent)
     end
 
-    page_names.reverse.unshift('<a href="/">novels</a>').join('&nbsp;/&nbsp;')
+    page_names.reverse.unshift('<a href="/novels">novels</a>').unshift('<a href="/">donuthole.org</a>').join('&nbsp;/&nbsp;')
   end
 
   def breadcrumb(page)
@@ -25,7 +25,7 @@ Hollyhock.helpers do
 
   def get_href(page)
     slugs = _get_slug(page, [])
-    '/'+slugs.join('/')
+    '/novels/'+slugs.join('/')
   end
 
   def _get_slug(page, arr)
@@ -39,5 +39,32 @@ Hollyhock.helpers do
 
   def formated_time(datetime)
     datetime.strftime('%y%m%d(%a)&nbsp;%H:%M:%S') rescue ''
+  end
+
+  def create_template(static_page)
+    template = StaticPage.get(static_page.template_id)
+
+    if template.nil?
+      p parse_textile(static_page.body)
+      return render :haml, parse_textile(static_page.body), :layout=>'application'
+    else
+      page = template.body
+      page.gsub!(/=yield/, parse_textile(static_page.body))
+      return render :erb, page, :layout=>false
+    end
+  end
+
+  def parse_textile(str)
+    is_inline_script = false
+
+    RedCloth.new(str).to_html.split("\n").map do |line|
+      if line =~ /<\/?inline_script>/
+        is_inline_script = !is_inline_script
+      end
+
+      line.gsub!(/^\s+/, '') unless is_inline_script
+
+      line
+    end.join("\n")
   end
 end

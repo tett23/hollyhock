@@ -4,5 +4,5 @@
   %ul
     -@collections.each do |collection|
       %li
-        =link_to collection.title, '/'+collection.slug
+        =link_to collection.title, '/novels/'+collection.slug
         =simple_format collection.description
