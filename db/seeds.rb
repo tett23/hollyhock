@@ -52,4 +52,18 @@ if articles_template.nil?
   ApplicationConfig.create(:name=>'articles_template', :value=>articles_template.id)
 end
 
+novels_root = ApplicationConfig.value(:novels_root)
+if novels_root.nil?
+  novels_root = Page.create(
+    :title=>'novels',
+    :slug=>'',
+    :description=>'',
+    :body=>'',
+    :parent_collection=>nil,
+    :is_collection=>true,
+    :view_count=>0)
+
+  ApplicationConfig.create(:name=>'novels_root', :value=>novels_root.id)
+end
+
 shell.say ""
