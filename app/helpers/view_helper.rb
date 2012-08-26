@@ -45,12 +45,11 @@ Hollyhock.helpers do
     template = StaticPage.get(static_page.template_id)
 
     if template.nil?
-      p parse_textile(static_page.body)
       return render :haml, parse_textile(static_page.body), :layout=>'application'
     else
-      page = template.body
-      page.gsub!(/=yield/, parse_textile(static_page.body))
-      return render :erb, page, :layout=>false
+      return render :haml, template.body, :layout=>:application do
+        parse_textile static_page.body
+      end
     end
   end
 
@@ -58,8 +57,10 @@ Hollyhock.helpers do
     is_inline_script = false
 
     RedCloth.new(str).to_html.split("\n").map do |line|
-      if line =~ /<\/?inline_script>/
-        is_inline_script = !is_inline_script
+      if line =~ /<inline_script>/
+        is_inline_script = true
+      elsif line =~ /<\/inline_script>/
+        is_inline_script = false
       end
 
       line.gsub!(/^\s+/, '') unless is_inline_script
