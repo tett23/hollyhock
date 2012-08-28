@@ -22,9 +22,13 @@ class Page
 
   def self.path_resolver(pathes)
     pages= nil
+
+    return get(ApplicationConfig.value(:novels_root)) if pathes.size == 1 && pathes.first == '/'
+
     pathes.each do |path|
       page = first(:slug=>path)
       page = first(:title=>URI.decode(path)) if page.nil?
+
       pages = page
     end
 

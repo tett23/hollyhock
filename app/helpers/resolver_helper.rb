@@ -2,6 +2,10 @@
 
 Hollyhock.helpers do
   def page_names(uri)
-    uri.split('/').delete_if{|s| s == ''}
+    pathes = uri.split('/').delete_if{|s| s == ''}
+    pathes.shift
+    pathes.unshift('/')
+
+    pathes
   end
 end
