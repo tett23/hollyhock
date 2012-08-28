@@ -1,3 +1,17 @@
+=stylesheet_link_tag 'jquery-ui-1.8.23.custom', 'jquery-ui-timepicker-addon'
+=javascript_include_tag '/javascripts/jquery', 'jquery-ui-1.8.23.custom.min', 'jquery-ui-sliderAccess', 'jquery-ui-timepicker-addon'
+
+:coffeescript
+  $ ->
+    $('#page_publish_on').datetimepicker({
+      dateFormat: 'yy-mm-dd',
+      timeFormat: 'hh:mm:ss',
+      hour: 21,
+      minute: 0,
+      hourGrid: 3,
+      minuteGrid: 10
+    })
+
 .group
   =f.label :title
   =f.error_message_on :title
@@ -38,6 +52,12 @@
   =f.label :is_public
   =f.error_message_on :is_public
   =f.check_box :is_public, :class => :check_box
+  %span.description Ex: a simple text
+
+.group
+  =f.label :publish_on
+  =f.error_message_on :publish_on
+  =f.text_field :publish_on, :class => :text_field, :value=>(@page.publish_on.strftime('%Y-%m-%d %H:%M:%S') unless @page.publish_on.nil?)
   %span.description Ex: a simple text
 
 .group

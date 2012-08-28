@@ -18,6 +18,7 @@
           %th=mat(:page, :parent_collection)
           %th=mat(:page, :is_collection)
           %th=mat(:page, :is_public)
+          %th=mat(:page, :publish_on)
           %th=mat(:page, :view_count)
           %th.last="&nbsp;"
         -@pages.each do |page|
@@ -30,6 +31,7 @@
             %td=page.page.nil? ? '' : page.page.select_title
             %td=page.is_collection
             %td=page.is_public
+            %td=page.publish_on.nil? ? '' : page.publish_on.strftime('%y-%m-%d&nbsp;%H:%M:%S')
             %td=page.view_count
             %td.last
               =button_to pat(:edit), url(:pages, :edit, :id => page.id), :method => :get, :class => :button_to
