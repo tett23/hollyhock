@@ -45,15 +45,15 @@ Hollyhock.helpers do
     template = StaticPage.get(static_page.template_id)
 
     if template.nil?
-      return render :haml, parse_textile(static_page.body), :layout=>'application'
+      return render :haml, textile(static_page.body), :layout=>'application'
     else
       return render :haml, template.body, :layout=>:application do
-        parse_textile static_page.body
+        textile static_page.body
       end
     end
   end
 
-  def parse_textile(str)
+  def textile(str)
     is_inline_script = false
 
     RedCloth.new(str).to_html.split("\n").map do |line|
