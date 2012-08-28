@@ -17,6 +17,7 @@
           %th=mat(:page, :body)
           %th=mat(:page, :parent_collection)
           %th=mat(:page, :is_collection)
+          %th=mat(:page, :is_public)
           %th=mat(:page, :view_count)
           %th.last="&nbsp;"
         -@pages.each do |page|
@@ -28,6 +29,7 @@
             %td=truncate page.body, :length=>100
             %td=page.page.nil? ? '' : page.page.select_title
             %td=page.is_collection
+            %td=page.is_public
             %td=page.view_count
             %td.last
               =button_to pat(:edit), url(:pages, :edit, :id => page.id), :method => :get, :class => :button_to

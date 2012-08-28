@@ -35,6 +35,12 @@
   %span.description Ex: a simple text
 
 .group
+  =f.label :is_public
+  =f.error_message_on :is_public
+  =f.check_box :is_public, :class => :check_box
+  %span.description Ex: a simple text
+
+.group
   =f.label :view_count
   =f.error_message_on :view_count
   =f.text_field :view_count, :class => :text_field, :disabled=>true
