@@ -21,18 +21,19 @@ class Page
   has n, :pages, :order=>[:created_at.desc, :id.desc]
 
   def self.path_resolver(pathes)
-    pages= nil
+    pages = [get(ApplicationConfig.value(:novels_root))]
 
-    return get(ApplicationConfig.value(:novels_root)) if pathes.size == 1 && pathes.first == '/'
+    return pages.first if pathes.size == 1 && pathes.first == '/'
+    pathes.shift
 
     pathes.each do |path|
-      page = first(:slug=>path)
-      page = first(:title=>URI.decode(path)) if page.nil?
+      page = pages.last.pages.first(:slug=>path)
+      page = pages.last.pages.first(:title=>URI.decode(path)) if page.nil?
 
-      pages = page
+      pages << page
     end
 
-    pages
+    pages.last
   end
 
   def self.root_collections
