@@ -12,6 +12,7 @@ class Page
   property :is_collection, Boolean
   property :view_count, Integer, :default=>0
   property :page_id, Integer
+  property :is_public, Boolean
   property :created_at, DateTime
   property :updated_at, DateTime
 
