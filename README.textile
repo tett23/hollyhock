@@ -11,3 +11,15 @@ padrino rake seed
 </pre>
 
 必要に応じて、StaticPageでrouteを"/about"にしてaboutページを作成する
+
+h3. 自動公開
+
+<pre>
+padrino rake page_publish_on
+</pre>
+
+==
+で現在よりpages.publish_onが昔のもののpages.is_publishをtrueにしているので、
+適当なcronを設定しておく。
+==
+
