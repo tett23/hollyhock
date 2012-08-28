@@ -61,6 +61,7 @@ if novels_root.nil?
     :body=>'',
     :parent_collection=>nil,
     :is_collection=>true,
+    :is_public=>true,
     :view_count=>0)
 
   ApplicationConfig.create(:name=>'novels_root', :value=>novels_root.id)
