@@ -24,8 +24,8 @@
             %td.first=page.id
             %td=page.title
             %td=page.slug
-            %td=page.description
-            %td=page.body
+            %td=truncate page.description, :length=>100
+            %td=truncate page.body, :length=>100
             %td=page.page.nil? ? '' : page.page.select_title
             %td=page.is_collection
             %td=page.view_count

@@ -18,7 +18,7 @@
           %tr
             %td.first=static_page.id
             %td=static_page.title
-            %td=static_page.body
+            %td=truncate static_page.body, :length=>100
             %td.last
               =button_to pat(:edit), url(:articles, :edit, :id => static_page.id), :method => :get, :class => :button_to
               ="|"

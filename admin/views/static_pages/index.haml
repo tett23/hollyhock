@@ -20,7 +20,7 @@
           %tr
             %td.first=static_page.id
             %td=static_page.route
-            %td=static_page.body
+            %td=truncate static_page.body, :length=>100
             %td=static_page.is_template
             %td=static_page.template_id
             %td.last
