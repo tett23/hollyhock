@@ -13,6 +13,7 @@ class Page
   property :view_count, Integer, :default=>0
   property :page_id, Integer
   property :is_public, Boolean
+  property :publish_on, DateTime
   property :created_at, DateTime
   property :updated_at, DateTime
 
