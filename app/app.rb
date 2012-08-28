@@ -12,6 +12,7 @@ class Hollyhock < Padrino::Application
     @page = Page.path_resolver(pathes)
 
     halt 404 if @page.nil?
+    halt 404 unless @page.is_public
 
     @page.increment_view_count()
 
