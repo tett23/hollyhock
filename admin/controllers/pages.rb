@@ -13,6 +13,7 @@ Admin.controllers :pages do
   end
 
   post :create do
+    params[:page][:publish_on] = nil if params[:page][:publish_on] == ''
     @page = Page.new(params[:page])
     @collections = Page.collections()
     if @page.save
@@ -31,6 +32,7 @@ Admin.controllers :pages do
 
   put :update, :with => :id do
     @page = Page.get(params[:id])
+    params[:page][:publish_on] = nil if params[:page][:publish_on] == ''
     params[:page][:page_id] = nil if params[:page][:page_id] == ''
     novels_root_id = ApplicationConfig.value(:novels_root).to_i
     params[:page][:page_id] = novels_root_id if @page.page_id.nil? && (@page.id != novels_root_id)

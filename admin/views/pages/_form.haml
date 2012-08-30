@@ -57,7 +57,7 @@
 .group
   =f.label :publish_on
   =f.error_message_on :publish_on
-  =f.text_field :publish_on, :class => :text_field, :value=>(@page.publish_on.strftime('%Y-%m-%d %H:%M:%S') unless @page.publish_on.nil?)
+  =f.text_field :publish_on, :class => :text_field, :value=>(@page.publish_on.strftime('%Y-%m-%d %H:%M:%S') unless @page.publish_on.blank?)
   %span.description Ex: a simple text
 
 .group
