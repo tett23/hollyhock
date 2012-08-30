@@ -17,3 +17,4 @@ pickle-email-*.html
 db/*.db
 Gemfile.lock
 Gemfile.local
+scripts/*
