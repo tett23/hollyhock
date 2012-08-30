@@ -56,7 +56,22 @@ class Page
     (self._select_title(self, [])).join('/')
   end
 
+  def href
+    slugs = _get_slug(self, [])
+    '/'+slugs.join('/')
+  end
+
+
   :private
+  def _get_slug(page, arr)
+    _arr = []
+    _arr << (page.slug.blank? ? page.title : page.slug)
+
+    return _arr+arr if page.page.nil?
+
+    _get_slug(page.page, _arr) + arr
+  end
+
   def _select_title(page, arr)
     _arr = []
     _arr << page.title

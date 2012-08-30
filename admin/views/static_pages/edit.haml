@@ -8,6 +8,7 @@
     %h2.title
       =pat(:edit)
       =mt(:static_page)
+      =button_to pat(:show), @static_page.route, :target=>:_blank, :method => :get, :class => :button_to
     .inner
       -form_for :static_page, url(:static_pages, :update, :id => @static_page.id), :method => :put, :class => :form do |f|
         =partial "static_pages/form", :locals => { :f => f }

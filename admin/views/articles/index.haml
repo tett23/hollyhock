@@ -20,6 +20,8 @@
             %td=static_page.title
             %td=truncate static_page.body, :length=>100
             %td.last
+              =button_to pat(:show), static_page.route, :target=>:_blank, :method => :get, :class => :button_to
+              ="|"
               =button_to pat(:edit), url(:articles, :edit, :id => static_page.id), :method => :get, :class => :button_to
               ="|"
               =button_to pat(:delete), url(:articles, :destroy, :id => static_page.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
