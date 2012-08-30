@@ -20,21 +20,7 @@ Hollyhock.helpers do
   end
 
   def breadcrumb(page)
-    '<a href="'+get_href(page)+'">'+page.title+'</a>'
-  end
-
-  def get_href(page)
-    slugs = _get_slug(page, [])
-    '/'+slugs.join('/')
-  end
-
-  def _get_slug(page, arr)
-    _arr = []
-    _arr << (page.slug.blank? ? page.title : page.slug)
-
-    return _arr+arr if page.page.nil?
-
-    _get_slug(page.page, _arr) + arr
+    '<a href="'+page.href+'">'+page.title+'</a>'
   end
 
   def formated_time(datetime)

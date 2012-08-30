@@ -7,5 +7,5 @@
   -pages.pages.each do |page|
     -next unless page.is_public
     %li
-      =link_to page.title, get_href(page)
+      =link_to page.title, page.href
       =partial :'pages/tree', :locals=>{:pages=>page}
