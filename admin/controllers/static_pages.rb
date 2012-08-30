@@ -1,7 +1,7 @@
 Admin.controllers :static_pages do
 
   get :index do
-    @static_pages = StaticPage.all
+    @static_pages = StaticPage.pages
     render 'static_pages/index'
   end
 
@@ -13,6 +13,7 @@ Admin.controllers :static_pages do
 
   post :create do
     params[:static_page][:template_id] = nil if params[:static_page][:template_id] == ''
+    p params
     @static_page = StaticPage.new(params[:static_page])
     @collections = StaticPage.collections()
     if @static_page.save

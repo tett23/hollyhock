@@ -23,6 +23,10 @@ class StaticPage
   end
 
   def self.articles
-    all(:is_article=>true)
+    all(:is_article=>true, :order=>[:id.desc])
+  end
+
+  def self.pages
+    all(:is_article=>false, :order=>[:id.desc])
   end
 end
