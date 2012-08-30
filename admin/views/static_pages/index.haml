@@ -11,6 +11,7 @@
       %table.table
         %tr
           %th.first=mat(:static_page, :id)
+          %th=mat(:static_page, :title)
           %th=mat(:static_page, :route)
           %th=mat(:static_page, :body)
           %th=mat(:static_page, :is_template)
@@ -19,6 +20,7 @@
         -@static_pages.each do |static_page|
           %tr
             %td.first=static_page.id
+            %td=static_page.title
             %td=static_page.route
             %td=truncate static_page.body, :length=>100
             %td=static_page.is_template
