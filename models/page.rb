@@ -62,7 +62,7 @@ class Page
   end
 
 
-  :private
+  private
   def _get_slug(page, arr)
     _arr = []
     _arr << (page.slug.blank? ? page.title : page.slug)
