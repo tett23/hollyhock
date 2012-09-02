@@ -6,7 +6,7 @@ class Hollyhock < Padrino::Application
 
   enable :sessions
 
-  get :'/:path', /^(^\/).+$/ do
+  get :'/:path', /^.+$/ do
     path = env['PATH_INFO']
     @content = StaticPage.find_by_path(path)
 
@@ -24,12 +24,6 @@ class Hollyhock < Padrino::Application
     else
       return create_template(@content)
     end
-  end
-
-  get :'/', /^(^\/)$/ do
-    @articles = StaticPage.articles()
-
-    render :'root/index'
   end
 
   error 404 do
