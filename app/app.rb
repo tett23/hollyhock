@@ -6,28 +6,24 @@ class Hollyhock < Padrino::Application
 
   enable :sessions
 
-
-  get :'/novels/:page', /^(^\/)novels($|(?=\/).+$)/ do
-    pathes = page_names(env['PATH_INFO'])
-    @page = Page.path_resolver(pathes)
-
-    halt 404 if @page.nil?
-    halt 404 unless @page.is_public
-
-    @page.increment_view_count()
-
-    render :'pages/show', :layout=>:novel
-  end
-
-  get :'/:static_page', /^(^\/).+$/ do
+  get :'/:path', /^(^\/).+$/ do
     path = env['PATH_INFO']
-    @static_page = StaticPage.find_by_path(path)
+    @content = StaticPage.find_by_path(path)
 
-    halt 404 if @static_page.nil?
+    pathes = page_names(path)
+    @content ||= Page.path_resolver(pathes)
 
-    @title = @static_page.title
+    halt 404 if @content.nil?
+    @title = @content.title
 
-    create_template(@static_page)
+    if @content.class == Page
+      halt 404 unless @content.is_public
+
+      @content.increment_view_count()
+      return render :'pages/show', :layout=>:novel
+    else
+      return create_template(@content)
+    end
   end
 
   get :'/', /^(^\/)$/ do

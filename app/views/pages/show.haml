@@ -2,15 +2,15 @@
 
 %article#novel
   %header
-    %h1=breadcrumbs(@page)
+    %h1=breadcrumbs(@content)
     #description
-      =textile @page.description
+      =textile @content.description
       #info.clearfix
-        %p#created_at.clearfix=formated_time @page.created_at
+        %p#created_at.clearfix=formated_time @content.created_at
         %p#view_count.clearfix
           閲覧数
-          =@page.view_count
+          =@content.view_count
   %section#body
-    =textile @page.body
+    =textile @content.body
   %footer
-    =partial :'pages/tree', :locals=>{:pages=>@page}
+    =partial :'pages/tree', :locals=>{:pages=>@content}
