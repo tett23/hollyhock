@@ -35,9 +35,22 @@ if articles.nil?
 <inline_script>
 -StaticPage.articles.each do |article|
   =partial :'root/article', :locals=>{:article=>article}
-<inline_script>
+</inline_script>
 </notextile>"
   articles = StaticPage.create(:title=>'articles', :route=>'/articles', :body=>body, :is_template=>false, :is_article=>false, :template_id=>nil)
+end
+
+articles = StaticPage.first(:route=>'/')
+if articles.nil?
+  shell.say '/articlesページを作成します'
+
+  body = "<notextile>
+<inline_script>
+-StaticPage.articles.each do |article|
+  =partial :'root/article', :locals=>{:article=>article}
+</inline_script>
+</notextile>"
+  articles = StaticPage.create(:title=>'トップページ', :route=>'/', :body=>body, :is_template=>false, :is_article=>false, :template_id=>nil)
 end
 
 articles_template = ApplicationConfig.value(:articles_template)
@@ -45,7 +58,7 @@ if articles_template.nil?
   body = "<notextile>
 <inline_script>
 =partial :'root/article', :locals=>{:article=>@static_page}
-<inline_script>
+</inline_script>
 </notextile>"
   articles_template = StaticPage.create(:title=>'articleパーマリンク用テンプレート', :route=>'', :body=>body, :is_template=>true, :is_article=>false, :template_id=>nil)
 
