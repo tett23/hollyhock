@@ -16,7 +16,11 @@ Hollyhock.helpers do
       page_names << breadcrumb(parent)
     end
 
-    page_names.reverse.unshift('<a href="/">donuthole.org</a>').join('&nbsp;/&nbsp;')
+    page_names.reverse.unshift('<a href="/">'+site_name+'</a>').join('&nbsp;/&nbsp;')
+  end
+
+  def site_name
+    site_name = ApplicationConfig.value(:site_name)
   end
 
   def breadcrumb(page)

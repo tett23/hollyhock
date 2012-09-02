@@ -3,12 +3,12 @@
 %html
   %head
     %meta{:charset=>'utf-8'}
-    %title=@title.nil? ? 'donuthole.org' : [@title, 'donuthole.org'].join('|')
+    %title=@title.nil? ? site_name : [@title, site_name].join('|')
     =stylesheet_link_tag '/stylesheets/normalize', '/stylesheets/common', '/stylesheets/static_page'
     =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
   %body
     %header
-      %h1=link_to 'donuthole.org', '/'
+      %h1=link_to site_name, '/'
       %nav.clearfix
         %ul
           %li=link_to 'top', '/'
