@@ -80,4 +80,9 @@ if novels_root.nil?
   ApplicationConfig.create(:name=>'novels_root', :value=>novels_root.id)
 end
 
+site_name = ApplicationConfig.value(:site_name)
+if site_name.nil?
+  ApplicationConfig.create(:name=>:site_name, :value=>'hollyhock')
+end
+
 shell.say ""
