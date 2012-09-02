@@ -20,7 +20,7 @@ Hollyhock.helpers do
   end
 
   def site_name
-    site_name = ApplicationConfig.value(:site_name)
+    ApplicationConfig.value(:site_name)
   end
 
   def breadcrumb(page)
