@@ -53,7 +53,7 @@ class Page
   end
 
   def select_title
-    (self._select_title(self, [])).join('/')
+    (_select_title(self, [])).join('/')
   end
 
   def href
