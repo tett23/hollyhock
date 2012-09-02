@@ -27,14 +27,14 @@ Hollyhock.helpers do
     datetime.strftime('%y%m%d(%a)&nbsp;%H:%M:%S') rescue ''
   end
 
-  def create_template(static_page)
-    template = StaticPage.get(static_page.template_id)
+  def create_template(content)
+    template = StaticPage.get(content.template_id)
 
     if template.nil?
-      return render :haml, textile(static_page.body), :layout=>'application'
+      return render :haml, textile(content.body), :layout=>'application'
     else
       return render :haml, template.body, :layout=>:application do
-        textile static_page.body
+        textile content.body
       end
     end
   end
