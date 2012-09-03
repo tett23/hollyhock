@@ -6,13 +6,8 @@ class Hollyhock < Padrino::Application
   register Padrino::Cache
 
   enable :sessions
-  enable :caching
 
-  Padrino.cache = Padrino::Cache::Store::Memory.new(50)
-
-  get :'/:path', /^.+$/, :cache=>true do
-    expires_in 60
-
+  get :'/:path', /^.+$/ do
     path = env['PATH_INFO']
     @content = StaticPage.find_by_path(path)
 
