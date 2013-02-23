@@ -1,5 +1,7 @@
 #encoding: utf-8
 
+require 'yaml'
+
 # Seed add you the ability to populate your db.
 # We provide you a basic shell for interaction with the end user.
 # So try some code like below:
@@ -80,19 +82,21 @@ if novels_root.nil?
   ApplicationConfig.create(:name=>'novels_root', :value=>novels_root.id)
 end
 
+configs = YAML.load_file('config/site_variables.yml').symbolize_keys
+
 site_name = ApplicationConfig.value(:site_name)
 if site_name.nil?
-  ApplicationConfig.create(:name=>:site_name, :value=>'hollyhock')
+  ApplicationConfig.create(:name=>:site_name, :value=>(configs[:site_name] || 'hollyhock'))
 end
 
 site_url = ApplicationConfig.value(:site_url)
 if site_url.nil?
-  ApplicationConfig.create(:name=>:site_url, :value=>'http://donuthole.org')
+  ApplicationConfig.create(:name=>:site_url, :value=>(configs[:site_url] || 'http://donuthole.org'))
 end
 
 author = ApplicationConfig.value(:author)
 if author.nil?
-  ApplicationConfig.create(:name=>:author, :value=>'author_name')
+  ApplicationConfig.create(:name=>:author, :value=>(configs[:author] || 'author_name'))
 end
 
 shell.say ""
