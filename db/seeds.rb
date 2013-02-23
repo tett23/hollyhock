@@ -85,4 +85,14 @@ if site_name.nil?
   ApplicationConfig.create(:name=>:site_name, :value=>'hollyhock')
 end
 
+site_url = ApplicationConfig.value(:site_url)
+if site_url.nil?
+  ApplicationConfig.create(:name=>:site_url, :value=>'http://donuthole.org')
+end
+
+author = ApplicationConfig.value(:author)
+if author.nil?
+  ApplicationConfig.create(:name=>:author, :value=>'author_name')
+end
+
 shell.say ""

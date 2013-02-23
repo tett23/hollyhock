@@ -6,6 +6,8 @@
     %title=@title.nil? ? site_name : [@title, site_name].join(' | ')
     =stylesheet_link_tag '/stylesheets/normalize', '/stylesheets/common', '/stylesheets/static_page'
     =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
+    =feed_tag(:rss, '/feed.rss', :title => "RSS")
+    =feed_tag(:atom, 'feed.atom', :title => "ATOM")
   %body
     %header
       %h1=link_to site_name, '/'
