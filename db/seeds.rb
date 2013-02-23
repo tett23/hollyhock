@@ -84,19 +84,24 @@ end
 
 configs = YAML.load_file('config/site_variables.yml').symbolize_keys
 
+# Hash#deleteは値を返す。なければnil
 site_name = ApplicationConfig.value(:site_name)
 if site_name.nil?
-  ApplicationConfig.create(:name=>:site_name, :value=>(configs[:site_name] || 'hollyhock'))
+  ApplicationConfig.create(:name=>:site_name, :value=>(configs[:site_name].delete || 'hollyhock'))
 end
 
 site_url = ApplicationConfig.value(:site_url)
 if site_url.nil?
-  ApplicationConfig.create(:name=>:site_url, :value=>(configs[:site_url] || 'http://donuthole.org'))
+  ApplicationConfig.create(:name=>:site_url, :value=>(configs[:site_url].delete || 'http://donuthole.org'))
 end
 
 author = ApplicationConfig.value(:author)
 if author.nil?
-  ApplicationConfig.create(:name=>:author, :value=>(configs[:author] || 'author_name'))
+  ApplicationConfig.create(:name=>:author, :value=>(configs[:author].delete || 'author_name'))
+end
+
+configs.each do |k, v|
+  ApplicationConfig.first_or_create(:name=>k, :value=>v)
 end
 
 shell.say ""
