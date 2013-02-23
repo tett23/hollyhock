@@ -17,7 +17,6 @@ class Page
   property :created_at, DateTime
   property :updated_at, DateTime
 
-
   belongs_to :page
   has n, :pages, :order=>[:created_at.desc, :id.desc]
 

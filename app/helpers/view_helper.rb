@@ -19,8 +19,20 @@ Hollyhock.helpers do
     page_names.reverse.unshift('<a href="/">'+site_name+'</a>').join('&nbsp;/&nbsp;')
   end
 
+  def get_config(key)
+    ApplicationConfig.value(key)
+  end
+
   def site_name
-    ApplicationConfig.value(:site_name)
+    get_config(:site_name)
+  end
+
+  def site_description
+    description = get_config(:site_description)
+    page = StaticPage.find_by_path('/about')
+    description = page.body unless page.nil?
+
+    description
   end
 
   def breadcrumb(page)

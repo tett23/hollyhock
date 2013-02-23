@@ -7,6 +7,17 @@ class Hollyhock < Padrino::Application
 
   enable :sessions
 
+  get :'/feed', :provides => [:rss] do
+    @posts = Feed.contents
+
+    case content_type
+    when :rss
+      render :builder, :'root/rss2', :layout=>false
+    when :atom
+      render :builder, :'root/atom', :layout=>false
+    end
+  end
+
   get :'/:path', /^.+$/ do
     path = env['PATH_INFO']
     @content = StaticPage.find_by_path(path)
