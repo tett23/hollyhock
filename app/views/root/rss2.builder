@@ -8,10 +8,10 @@ xml.rss(
   "xmlns:atom" => "http://www.w3.org/2005/Atom"
 ) do
   xml.channel do
-    xml.title       get_config(:site_name)
-    xml.link        site_url
-    xml.pubDate     Time.now.rfc822
-    xml.description site_description
+    xml.title         get_config(:site_name)
+    xml.link          site_url
+    xml.lastBuildDate Time.now.rfc822
+    xml.description   site_description
     xml.atom :link, "href" => site_url+'/feed.rss', "rel" => "self", "type" => "application/rss+xml"
 
     @posts.each do |post|
