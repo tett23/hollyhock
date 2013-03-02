@@ -7,7 +7,7 @@ class Hollyhock < Padrino::Application
 
   enable :sessions
 
-  get :'/feed', :provides => [:rss2] do
+  get :'/feed', :provides => [:rss] do
     @posts = Feed.contents
 
     case content_type

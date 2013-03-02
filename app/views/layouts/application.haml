@@ -6,7 +6,7 @@
     %title=@title.nil? ? site_name : [@title, site_name].join(' | ')
     =stylesheet_link_tag '/stylesheets/normalize', '/stylesheets/common', '/stylesheets/static_page'
     =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
-    =feed_tag(:rss, '/feed.rss2', :title => "RSS 2.0")
+    =feed_tag(:rss, '/feed.rss', :title => "RSS 2.0")
     -if settings.production?
       %script{:type=>'text/javascript'}
         var _gaq = _gaq || [];
