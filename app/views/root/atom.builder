@@ -14,7 +14,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
       xml.title   post.title
       xml.link    "rel" => "alternate", "href" => (post.class == StaticPage ? post.route : post.href)
       xml.id      site_url+(post.class == StaticPage ? post.route : post.href)
-      xml.updated post.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ"
+      xml.updated post.created_at.nil? ? '' : post.created_at.strftime('%Y-%m-%dT%H:%M:%SZ')
       xml.author  { xml.name author_name}
       xml.summary post.body
     end

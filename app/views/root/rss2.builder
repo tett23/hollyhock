@@ -22,7 +22,7 @@ xml.rss(
         xml.link         href
         xml.guid         site_url+href
         xml.description  post.body
-        xml.pubDate      post.created_at.rfc822
+        xml.pubDate      post.created_at.nil? ? '' : post.created_at.rfc822
         xml.dc :creator, author_name
       end
     end

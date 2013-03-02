@@ -7,7 +7,7 @@
     =stylesheet_link_tag '/stylesheets/normalize', '/stylesheets/common', '/stylesheets/static_page'
     =javascript_include_tag '/javascripts/jquery', '/javascripts/jquery-ujs'
     =feed_tag(:rss, '/feed.rss', :title => "RSS")
-    =feed_tag(:atom, 'feed.atom', :title => "ATOM")
+    =feed_tag(:atom, '/feed.atom', :title => "ATOM")
     -if settings.production?
       %script{:type=>'text/javascript'}
         var _gaq = _gaq || [];
